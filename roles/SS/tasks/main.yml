@@ -1,0 +1,13 @@
+---
+# author: Levi
+
+- name: copy ss.tar
+  unarchive:
+    src: "{{ Path.Pkg_Src }}{{ Version.SS_V }}.tar.gz"
+    dest: "{{ Path.Pkg_Dst }}"
+
+- name: install ss
+  shell: >
+    source /etc/profile ~/.bash_profile;./install.sh
+  args:
+    chdir: "{{ Path.Pkg_Dst }}{{ Version.SS_V }}"

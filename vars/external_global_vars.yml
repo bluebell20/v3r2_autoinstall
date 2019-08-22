@@ -1,0 +1,12 @@
+Version:
+  fonsview_3RD_V: Fonsview.3rd_party_2.5.0_61_CentOS_Linux_release_7.4_x86_64
+  CMS_V: FV6200-CMS-V3.2.0-73043-GEN 
+  FUMS_V: FV6300-FUMS-V3.2.0-F302B08-GEN
+  JDK_V: Fonsview.3rd_party_jdk_1.8
+  TOMCAT8_V: Fonsview.tomcat_FUMS_8.5.34_4174
+  CMM_V: FV6000-CMM-V3.2.0-554-GEN
+  SS_V: FV6000-SS-V3.2.0-15605-GEN-CentOS7.4
+  AGENT_V: FV6300-AGENT-V3.2.0-F302B08-GEN
+Path:
+  Pkg_Src: /etc/ansible/pkgs/
+  Pkg_Dst: /home/fonsview/

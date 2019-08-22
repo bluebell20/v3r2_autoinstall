@@ -1,0 +1,8 @@
+---
+# Author: Levi
+
+- name: init passwd
+  shell: >
+    source /etc/profile ~/.bash_profile;sh init_mysql_pass.sh
+  args:
+    chdir: "{{ Path.Pkg_Dst }}"

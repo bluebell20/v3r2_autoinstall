@@ -1,0 +1,18 @@
+---
+
+- name:  if t8 is installed
+  shell: ls /opt/fonsview/3RD/fumstomcat
+  ignore_errors: True
+  register: result
+
+- name: copy tar
+  unarchive:
+    src: "{{ Path.Pkg_Src }}{{ Version.TOMCAT8_V }}.tar.gz"
+    dest: "{{ Path.Pkg_Dst }}"
+  when: result is failed
+
+- name: install t8
+  shell: source /etc/profile ~/.bash_profile;./install.sh
+  args:
+    chdir: "{{ Path.Pkg_Dst }}{{ Version.TOMCAT8_V }}"
+  when: result is failed

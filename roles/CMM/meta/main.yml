@@ -1,0 +1,5 @@
+---
+dependencies:
+  - { role: MYSQL }
+  - { role: VSFTP }
+  - { role: 3RD }

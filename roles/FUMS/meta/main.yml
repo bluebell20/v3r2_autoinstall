@@ -1,0 +1,7 @@
+---
+dependencies:
+  - { role: TOMCAT8 }
+  #- { role: MQ }
+  #- { role: MYSQL }
+  #- { role: JDK }
+    

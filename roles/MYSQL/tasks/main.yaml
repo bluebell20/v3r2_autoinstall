@@ -1,0 +1,9 @@
+---
+# Author: Levi
+
+- name: start mysql
+  service: 
+    name: mysqld
+    state: started
+
+- import_tasks: init_pass.yml

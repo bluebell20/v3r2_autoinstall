@@ -1,0 +1,12 @@
+---
+# Author: Levi
+
+- name: copy initpass shell
+  copy: 
+    src: init_mysql_pass.sh
+    dest: "{{ Path.Pkg_Dst }}"
+    owner: root
+    group: root
+    mode: '0700'
+  notify:
+    - init passwd

@@ -1,0 +1,28 @@
+---
+# Author: Levi
+
+- name: copy shell
+  copy:
+    src: chang_attr.sh
+    dest: "{{ Path.Pkg_Dst }}"
+    owner: root
+    group: root
+    mode: 0600
+
+- name: add
+  shell:
+    sh chang_attr.sh -a
+  args:
+    chdir: "{{ Path.Pkg_Dst }}"
+  register: import
+  failed_when: "import.stderr != ''"
+  when: attr == 'add'
+
+- name: subtraction
+  shell:
+    sh chang_attr.sh -d
+  args:
+    chdir: "{{ Path.Pkg_Dst }}"
+  register: import
+  failed_when: "import.stderr != ''"
+  when: attr == 'sub'

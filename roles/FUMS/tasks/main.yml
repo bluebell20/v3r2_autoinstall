@@ -1,0 +1,18 @@
+---
+
+- name:  if fums is installed
+  shell: ls /opt/fonsview/NE/fums/
+  ignore_errors: True
+  register: result
+
+- name: copy tar
+  unarchive:
+    src: "{{ Path.Pkg_Src }}{{ Version.FUMS_V }}.tar.gz"
+    dest: "{{ Path.Pkg_Dst }}"
+  when: result is failed
+
+- name: install fums
+  shell: source /etc/profile ~/.bash_profile;./install.sh
+  args:
+    chdir: "{{ Path.Pkg_Dst }}{{ Version.FUMS_V }}"
+  when: result is failed

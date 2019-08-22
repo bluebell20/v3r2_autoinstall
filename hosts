@@ -1,0 +1,8 @@
+[SS]
+ss01 ansible_host=10.41.77.211
+ss02 ansible_host=10.41.77.212
+[SS:vars]
+ansible_user=fonsview
+ansible_ssh_pass="viMXMW5xVc"
+ansible_port=49721
+ansible_become_pass="hello123"

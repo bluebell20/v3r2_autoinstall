@@ -1,0 +1,37 @@
+---
+# author: Levi
+
+- name: autostart vsftp
+  service: 
+    name: vsftpd
+    enabled: yes
+
+- name: Ensure group "ftp" exists
+  group:
+    name: ftp
+    state: present
+
+- name: add user
+  user: 
+    name: ftpuser
+    shell: /sbin/nologin
+    group: ftp
+    home: /opt/fonsview/data/media
+    password: $6$adHPb7UMt2ZOyvFh$9Hs/0CFjuat4V1jFNJcSSDdT1amARTAxytOeSMtK4X4b9leBG.OpfK5GlR/8diSnPpawBW02Opuf4fXxt5R4p0
+
+- name: chang attributes
+  file:
+    path: /opt/fonsview/data
+    state: directory
+    mode: '0755'
+   
+- name: chang attributes_1
+  file:
+    path: /opt/fonsview/data/media
+    state: directory
+    mode: '0755' 
+
+- name: start vsftp
+  service:
+    name: vsftpd
+    state: started

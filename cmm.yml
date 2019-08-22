@@ -1,0 +1,12 @@
+
+ - hosts: SS
+   become: yes
+   become_method: su
+   
+   vars_files:
+    - /etc/ansible/vars/external_global_vars.yml 
+     
+   roles:
+   # - role: JDK
+    - role: CMM
+   # - role: CMS

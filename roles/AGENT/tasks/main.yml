@@ -1,0 +1,25 @@
+---
+# install agent
+# author: Levi
+
+- name: copy agent.tar
+  unarchive:
+    src: "{{ Path.Pkg_Src }}{{ Version.AGENT_V }}.tar.gz"
+    dest: "{{ Path.Pkg_Dst }}"
+
+- name: install agent
+  shell: source /etc/profile ~/.bash_profile;sh install.sh
+  args:
+    chdir: "{{ Path.Pkg_Dst }}{{ Version.AGENT_V }}"
+
+- name: change SystemConfig.properties
+  lineinfile: 
+    path: /opt/fonsview/NE/agent/SystemConfig.properties
+    regexp: '^AGENT_IP='
+    line: AGENT_IP={{ ansible_host }}
+
+- name: change rabbitmq.properties
+  lineinfile:
+    path: /opt/fonsview/NE/agent/rabbitmq.properties
+    regexp: '^rabbitmq.host='
+    line: rabbitmq.host={{ hostvars['ss01']['ansible_host'] }}

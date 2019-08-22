@@ -1,0 +1,18 @@
+---
+
+- name:  if jdk is installed
+  shell: ls  /opt/fonsview/3RD/jdk1.8/
+  ignore_errors: True
+  register: result
+
+- name: copy tar
+  unarchive:
+    src: "{{ Path.Pkg_Src }}{{ Version.JDK_V }}.tar.gz"
+    dest: "{{ Path.Pkg_Dst }}"
+  when: result is failed
+
+- name: install jdk
+  shell: source /etc/profile ~/.bash_profile;./install.sh
+  args:
+    chdir: "{{ Path.Pkg_Dst }}{{ Version.JDK_V }}"
+  when: result is failed
